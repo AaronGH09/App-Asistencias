@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Presente o Ausente!</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>¡Presente o Ausente!</h1>
+        
+        <div class="sidebar">
+            <h2>Mis Amigos</h2>
+            <div class="students" id="studentsContainer">
+                <!-- Los estudiantes se cargarán dinámicamente -->
+            </div>
+            <button id="addStudent" class="add-button">➕ Agregar Estudiante</button>
+        </div>
+
+        <div class="main-content">
+            <div class="destinations">
+                <div class="destination" id="escuela">
+                    <img src="img/colegio.jpeg" alt="Escuela">
+                    <h3>Escuela</h3>
+                </div>
+                <div class="destination" id="casa">
+                    <img src="img/casa.jpeg" alt="Casa">
+                    <h3>Casa</h3>
+                </div>
+            </div>
+        </div>
+
+        <div id="message" class="message"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
