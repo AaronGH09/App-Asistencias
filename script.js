@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const studentsContainer = document.getElementById('studentsContainer');
     const destinations = document.querySelectorAll('.destination');
-    const messageDiv = document.getElementById('message');
+    const messageEscuela = document.getElementById('message-escuela');
+    const messageCasa = document.getElementById('message-casa');
     const addStudentBtn = document.getElementById('addStudent');
     let studentCount = 0;
 
@@ -53,27 +54,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 destination.classList.remove('drag-over');
                 
                 const studentName = e.dataTransfer.getData('text/plain');
+                const message = destination.id === 'escuela' ? messageEscuela : messageCasa;
+                
+                // Ocultar todos los mensajes primero
+                messageEscuela.style.display = 'none';
+                messageCasa.style.display = 'none';
                 
                 if (destination.id === 'escuela') {
-                    messageDiv.textContent = `¡${studentName} está presente! ¡Biennnnn! 🎉`;
-                    messageDiv.className = 'message presente';
+                    message.textContent = `¡${studentName} está presente! ¡Biennnnn! 🎉`;
+                    message.className = 'message presente';
                 } else if (destination.id === 'casa') {
-                    messageDiv.textContent = `¡${studentName} está ausente! 😢`;
-                    messageDiv.className = 'message ausente';
+                    message.textContent = `¡${studentName} está ausente! 😢`;
+                    message.className = 'message ausente';
                 }
 
-                messageDiv.style.display = 'block';
+                message.style.display = 'block';
                 
                 setTimeout(() => {
-                    messageDiv.style.display = 'none';
-                }, 5000);
+                    message.style.display = 'none';
+                }, 3000);
             });
         });
     }
 
     addStudentBtn.addEventListener('click', async () => {
         try {
-            // Crear un input de tipo file
             const input = document.createElement('input');
             input.type = 'file';
             input.accept = 'image/*';
@@ -99,6 +104,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Configurar el arrastrar y soltar inicial
     setupDragAndDrop();
 }); 

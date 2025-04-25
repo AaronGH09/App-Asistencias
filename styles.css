@@ -30,12 +30,33 @@ h1 {
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     margin-bottom: 20px;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+
+.sidebar::-webkit-scrollbar {
+    height: 8px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: #4ecdc4;
+    border-radius: 4px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: #3dbeb6;
 }
 
 .students {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    display: inline-flex;
     gap: 15px;
+    padding: 10px 0;
 }
 
 .student {
@@ -46,6 +67,8 @@ h1 {
     cursor: grab;
     transition: transform 0.2s;
     border: 2px solid #ffd166;
+    flex-shrink: 0;
+    width: 150px;
 }
 
 .student:hover {
@@ -67,6 +90,10 @@ h1 {
     font-size: 1.2em;
 }
 
+.main-content {
+    position: relative;
+}
+
 .destinations {
     display: flex;
     justify-content: space-around;
@@ -80,6 +107,8 @@ h1 {
     text-align: center;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     min-width: 200px;
+    position: relative;
+    margin-top: 60px;
 }
 
 .destination img {
@@ -91,14 +120,22 @@ h1 {
 }
 
 .message {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
     text-align: center;
-    margin-top: 20px;
-    padding: 15px;
+    padding: 15px 25px;
     border-radius: 10px;
     font-size: 1.5em;
     font-weight: bold;
     display: none;
     animation: fadeInOut 5s ease-in-out;
+    z-index: 100;
+    min-width: 300px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    background-color: #a8e6cf;
+    color: #2d3436;
 }
 
 .message.presente {
@@ -116,20 +153,8 @@ h1 {
 @keyframes fadeInOut {
     0% { opacity: 0; }
     10% { opacity: 1; }
-    90% { opacity: 1; }
+    80% { opacity: 1; }
     100% { opacity: 0; }
-}
-
-@media (max-width: 768px) {
-    .destinations {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-    }
-    
-    .students {
-        grid-template-columns: repeat(2, 1fr);
-    }
 }
 
 .add-button {
@@ -148,4 +173,16 @@ h1 {
 
 .add-button:hover {
     background-color: #3dbeb6;
+}
+
+@media (max-width: 768px) {
+    .destinations {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .students {
+        grid-template-columns: repeat(2, 1fr);
+    }
 } 
